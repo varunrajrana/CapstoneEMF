@@ -48,15 +48,11 @@ def ftp():
     rdir=r'/home/pi/Data/'
 
     client = SSHClient()
-    #LOAD HOST KEYS
-    #client.load_host_keys('~/.ssh/known_hosts')
     client.load_host_keys('C:/Users/varun/.ssh/known_hosts')
     client.load_system_host_keys()
 
     #Known_host policy
     client.set_missing_host_key_policy(AutoAddPolicy())
-
-    #client.connect('10.1.1.92', username='root', password='password1')
     client.connect('raspberrypi.local', username='pi',password='3953')
 
     sftp=client.open_sftp()
@@ -128,9 +124,7 @@ def demo():
             ftp()
             return True
         return False
-        
 
-    
     show_in_native_window(app)
     
 if __name__ == '__main__':
